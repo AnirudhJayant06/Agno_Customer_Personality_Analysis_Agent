@@ -1,0 +1,21 @@
+# ===== Core Required =====
+agno>=0.1.27
+pandas>=2.0.0
+numpy>=1.24.0
+python-dotenv>=1.0.0
+requests>=2.31.0
+pyarrow>=14.0.0
+typing-extensions>=4.10.0
+
+# ===== For structured outputs, visuals, logging =====
+pydantic>=2.5.0
+matplotlib>=3.7.0
+orjson>=3.9.10
+tqdm>=4.65.0
+loguru>=0.7.0
+
+# ===== Deployment (install LATER) =====
+# fastapi>=0.110.0
+# uvicorn[standard]>=0.30.0
+# streamlit>=1.35.0
+# gradio>=4.21.0
