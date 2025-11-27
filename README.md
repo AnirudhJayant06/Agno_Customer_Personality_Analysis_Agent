@@ -52,24 +52,31 @@ This dataset contains detailed customer characteristics and purchasing behavior.
 | Year_Birth | Birth year |
 | Education | Level of education |
 | Marital_Status | Single/Married/Other labels |
-| Income | Household income |
+| Income | Household yearly income |
 | Kidhome | Number of children |
 | Teenhome | Number of teenagers |
 | Dt_Customer | Enrollment date |
 | Recency | Days since last purchase |
-| MntWines | Wine spend |
-| MntFruits | Fruits spend |
-| MntMeatProducts | Meat spend |
-| MntFishProducts | Fish spend |
-| MntSweetProducts | Sweet spend |
-| MntGoldProds | Gold product spend |
+| MntWines | Spending on wine in last 2 years |
+| MntFruits | Spending on fruits in last 2 years  |
+| MntMeatProducts | Spending on meat in last 2 years |
+| MntFishProducts | Spending on fish in last 2 years |
+| MntSweetProducts | Spending on sweets in last 2 years |
+| MntGoldProds | Spending on gold in last 2 years |
 | NumDealsPurchases | Purchases using discounts |
+| AcceptedCmp1 | 1 - Accept offer in 1st campaign else 0 |
+| AcceptedCmp2 | 1 - Accept offer in 2nd campaign else 0 |
+| AcceptedCmp3 | 1 - Accept offer in 3rd campaign else 0 |
+| AcceptedCmp4 | 1 - Accept offer in 4th campaign else 0s |
+| AcceptedCmp5 | 1 - Accept offer in 5th campaign else 0 |
+| Response | 1 - Accept offer in last campaign else 0s |
 | NumWebPurchases | Online purchases |
 | NumCatalogPurchases | Catalog purchases |
 | NumStorePurchases | In-store purchases |
 | NumWebVisitsMonth | Monthly website visits |
 | Complain | Whether customer complained |
-| Response | Accepted last campaign |
+| Z_CostContact |  |
+| Z_Revenue |  |
 
 ### 3.1 Derived Metrics (Computed Inside Tools)
 
@@ -121,7 +128,7 @@ This system is built to answer business questions like:
 ## 6. Folder Structure
 
 ```
-agno-tabular-agents/
+Agno_Customer_Personality_Analysis_Agent/
 │
 ├── data/
 │ └── marketing_campaign.csv # Original Kaggle dataset
