@@ -15,3 +15,5 @@ customer_personality_analysis_agent/
 # Other files - pickle object & database files
 *.pkl
 *.db
+
+.vscode/
