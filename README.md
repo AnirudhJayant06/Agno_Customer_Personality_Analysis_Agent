@@ -46,37 +46,55 @@ This dataset contains detailed customer characteristics and purchasing behavior.
 
 ### **Rows & Columns**
 
+### People
+| S.no | Column | Description |
+| -- |--------|-------------|
+| 1. | ID | Unique customer ID |
+| 2. | Year_Birth | Birth year |
+| 3. | Education | Level of education |
+| 4. | Marital_Status | Single/Married/Other labels |
+| 5. | Income | Household yearly income |
+| 6. | Kidhome | Number of children |
+| 7. | Teenhome | Number of teenagers |
+| 8. | Dt_Customer | Enrollment date |
+| 9. | Recency | Days since last purchase |
+| 10. | Complain | Whether customer complained |
+
+### Products
 | Column | Description |
 |--------|-------------|
-| ID | Unique customer ID |
-| Year_Birth | Birth year |
-| Education | Level of education |
-| Marital_Status | Single/Married/Other labels |
-| Income | Household yearly income |
-| Kidhome | Number of children |
-| Teenhome | Number of teenagers |
-| Dt_Customer | Enrollment date |
-| Recency | Days since last purchase |
-| MntWines | Spending on wine in last 2 years |
-| MntFruits | Spending on fruits in last 2 years  |
-| MntMeatProducts | Spending on meat in last 2 years |
-| MntFishProducts | Spending on fish in last 2 years |
-| MntSweetProducts | Spending on sweets in last 2 years |
-| MntGoldProds | Spending on gold in last 2 years |
-| NumDealsPurchases | Purchases using discounts |
-| AcceptedCmp1 | 1 - Accept offer in 1st campaign else 0 |
-| AcceptedCmp2 | 1 - Accept offer in 2nd campaign else 0 |
-| AcceptedCmp3 | 1 - Accept offer in 3rd campaign else 0 |
-| AcceptedCmp4 | 1 - Accept offer in 4th campaign else 0s |
-| AcceptedCmp5 | 1 - Accept offer in 5th campaign else 0 |
-| Response | 1 - Accept offer in last campaign else 0s |
-| NumWebPurchases | Online purchases |
-| NumCatalogPurchases | Catalog purchases |
-| NumStorePurchases | In-store purchases |
-| NumWebVisitsMonth | Monthly website visits |
-| Complain | Whether customer complained |
-| Z_CostContact |  |
-| Z_Revenue |  |
+| 11. | MntWines | Spending on wine in last 2 years |
+| 12. | MntFruits | Spending on fruits in last 2 years  |
+| 13. | MntMeatProducts | Spending on meat in last 2 years |
+| 14. | MntFishProducts | Spending on fish in last 2 years |
+| 15. | MntSweetProducts | Spending on sweets in last 2 years |
+| 16. | MntGoldProds | Spending on gold in last 2 years |
+
+
+### Promotions
+| Column | Description |
+|--------|-------------|
+| 17. | NumDealsPurchases | Purchases using discounts |
+| 18. | AcceptedCmp1 | 1 - Accept offer in 1st campaign else 0 |
+| 19. | AcceptedCmp2 | 1 - Accept offer in 2nd campaign else 0 |
+| 20. | AcceptedCmp3 | 1 - Accept offer in 3rd campaign else 0 |
+| 21. | AcceptedCmp4 | 1 - Accept offer in 4th campaign else 0s |
+| 22. | AcceptedCmp5 | 1 - Accept offer in 5th campaign else 0 |
+| 23. | Response | 1 - Accept offer in last campaign else 0s |
+
+### Places
+| Column | Description |
+|--------|-------------|
+| 24. | NumWebPurchases | Online purchases |
+| 25. | NumCatalogPurchases | Catalog purchases |
+| 26. | NumStorePurchases | In-store purchases |
+| 27. | NumWebVisitsMonth | Monthly website visits |
+
+### Other
+| Column | Description |
+|--------|-------------|
+| 28. | Z_CostContact |  |
+| 29. | Z_Revenue |  |
 
 ### 3.1 Derived Metrics (Computed Inside Tools)
 
