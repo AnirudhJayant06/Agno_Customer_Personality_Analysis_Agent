@@ -33,6 +33,9 @@ def clean_data() -> pd.DataFrame:
     }
     df["Marital_Status"] = df["Marital_Status"].map(marital_map)
 
+    # lowering the "Marital_Status" column values for comparison later on
+    df["Marital_Status"] = df["Marital_Status"].str.strip().str.lower()
+
     # 2. Clean 'Education' column
     edu_map = {
         "Graduation": "Graduate",
@@ -42,6 +45,9 @@ def clean_data() -> pd.DataFrame:
         "Basic": "Basic"
     }
     df["Education"] = df["Education"].map(edu_map)
+
+    # lowering the "Education" column values for comparison later on
+    df["Education"] = df["Education"].str.strip().str.lower()
 
     # 3. Dropping constant columns
     df.drop(columns=["Z_CostContact", "Z_Revenue"], inplace=True)
@@ -99,7 +105,7 @@ def feature_engineering() -> pd.DataFrame:
     df["TotalSpend"] = df[SPEND_COLUMNS].sum(axis=1)
 
     # 5. Creating 'IsHighValue' feature
-    
+
     # IsHighValue = top 20% by TotalSpend
     high_value_threshold = df["TotalSpend"].quantile(0.80)
     df["IsHighValue"] = df["TotalSpend"] >= high_value_threshold
