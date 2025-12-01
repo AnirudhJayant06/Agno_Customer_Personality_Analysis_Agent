@@ -39,7 +39,7 @@ Orchestrator Agent
 
 ## 3. Dataset Description
 
-### **File:** `data/marketing_campaign.csv`  
+### **File:** [`marketing_campaign.csv`](https://www.kaggle.com/datasets/imakash3011/customer-personality-analysis/data)  
 *(Tab-separated file; delimiter = `\t`)*
 
 This dataset contains detailed customer characteristics and purchasing behavior.
