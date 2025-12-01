@@ -52,7 +52,7 @@ def clean_data() -> pd.DataFrame:
         df[col] = df[col].clip(upper=round(df[col].quantile(0.99)))
 
     # 5. Handling missing values in 'Income' by median imputation
-    df["Income"].fillna(df["Income"].median(), inplace=True)
+    df["Income"] = df["Income"].fillna(df["Income"].median())
 
     # 6. Parsing 'Dt_Customer' to datetime (dataset uses day-first formats)
     df["Dt_Customer"] = pd.to_datetime(df["Dt_Customer"], format="%d-%m-%Y")
@@ -98,7 +98,16 @@ def feature_engineering() -> pd.DataFrame:
 
     df["TotalSpend"] = df[SPEND_COLUMNS].sum(axis=1)
 
+    # 5. Creating 'IsHighValue' feature
+    
+    # IsHighValue = top 20% by TotalSpend
+    high_value_threshold = df["TotalSpend"].quantile(0.80)
+    df["IsHighValue"] = df["TotalSpend"] >= high_value_threshold
+
     return df
+
+def get_final_dataset() -> pd.DataFrame:
+    return feature_engineering()
 
 if __name__ == "__main__":
 
@@ -116,4 +125,5 @@ if __name__ == "__main__":
     fe_df = feature_engineering()
     print(fe_df.head())
     print(fe_df.shape)
+    print()
 
