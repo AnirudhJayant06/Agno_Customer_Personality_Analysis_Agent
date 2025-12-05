@@ -32,8 +32,8 @@ def _global_stats_impl() -> Dict[str, float]:
 
     return {
         "n_customers": n_customers,
-        "avg_income": round(avg_income, 2),
-        "avg_total_spend": round(avg_total_spend, 2),
+        "avg_income ($)": round(avg_income, 2),
+        "avg_total_spend ($)": round(avg_total_spend, 2),
         "avg_recency_days": round(avg_recency, 2),
         "avg_customer_tenure_days": round(avg_tenure_days, 2),
         "pct_high_value_customers": round(high_value_pct, 2),
@@ -144,8 +144,20 @@ def _segment_stats_impl(
     stop_after_tool_call=False,
 )
 
-def segment_stats() -> Dict[str, float]:
-    return _segment_stats_impl()
+def segment_stats(
+    marital_status: Optional[str] = None,
+    has_children: Optional[bool] = None,
+    high_value_only: bool = False,
+) -> Dict[str, float]:
+    return _segment_stats_impl(
+        marital_status=marital_status,
+        has_children=has_children,
+        high_value_only=high_value_only,
+    )
+
+
+# def segment_stats() -> Dict[str, float]:
+#     return _segment_stats_impl()
 
 # -------------------------------------------
 
