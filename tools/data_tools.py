@@ -203,5 +203,6 @@ def _top_customers_by_spend_impl(n: int = 10) -> Dict[str, List[Dict[str, float]
     show_result=False,
     stop_after_tool_call=False)
 
-def top_customer_by_spend() -> Dict[str, float]:
-    return _top_customers_by_spend_impl()
+def top_customers_by_spend(
+    n: int = 10) -> Dict[str, List[Dict[str, float]]]:
+    return _top_customers_by_spend_impl(n=n)
