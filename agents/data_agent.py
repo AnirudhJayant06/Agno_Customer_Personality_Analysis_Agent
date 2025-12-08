@@ -28,8 +28,12 @@ if str(PROJECT_ROOT) not in sys.path:
 from tools.data_tools import (
     global_stats,
     segment_stats,
-    top_customer_by_spend,
+    top_customers_by_spend,
 )
+
+def get_tools_used(resp):
+    return [t.tool_name for t in resp.tools]
+
 
 def create_data_agent(model) -> Agent:
     """
@@ -56,7 +60,7 @@ def create_data_agent(model) -> Agent:
         tools=[
             global_stats,
             segment_stats,
-            top_customer_by_spend,
+            top_customers_by_spend,
         ],
 
         # These are additional instructions for the agent to perform better
@@ -67,7 +71,12 @@ def create_data_agent(model) -> Agent:
             "You are FORBIDDEN from guessing or inventing numeric values.",
             "If a tool fails or is unavailable, say you cannot answer instead of guessing.",
             "When calling a tool with no parameters, always use {} as the arguments object.",
-            
+            "If the user explicitly asks for a raw list, table, JSON array, or 'do not summarize', "
+            "then return the tool's JSON output directly (possibly lightly reformatted) without aggregation.",
+            "If the user asks for 'summary', 'stats', 'insights', or similar, you may compute aggregate "
+            " statistics over the tool output (e.g., averages, min, max) and return a summarized view.",
+            "If it is unclear, prefer returning both: a 'summary' section and a 'customers' list in the JSON.",
+
             # Style rules
             "Respond in short, clear bullet points without markdown headings.",
             "Do not use Markdown headings like ### or bold formatting.",
@@ -105,7 +114,7 @@ if __name__ == "__main__":
     if resp1.tools:
         print("\n✅ Tools were used in this run.\n")
     else:
-        print("❌ No tools were used – answer likely hallucinated.")
+        print("❌ No tools were used - answer likely hallucinated.")
         #raise RuntimeError("Agent did not use any tools. Rejecting answer.")
 
     print("\n--- Agent Output ---\n")
@@ -145,8 +154,24 @@ if __name__ == "__main__":
     )
     print(resp2.content)
 
+    print('Resp 2 - tool name: ', get_tools_used(resp2))
+
+    print("\n=== Checking if any tools were used ===")
+    if not resp2.tools:
+        raise RuntimeError("Agent did not use any tools. Rejecting answer.")
+    else:
+        print(f"Agent used {len(resp2.tools)} tool(s).")
+    
+
+    print("\n=== Test 3: Return top n customers ranked by TotalSpend ===")
+    resp3 = agent.run(
+        "Get stats for top 20 customers based on their total spend.",
+        stream=False,
+    )
+    print(resp3.content)
+
     print("\n=== Checking if any tools were used ===")
     if not resp1.tools:
         raise RuntimeError("Agent did not use any tools. Rejecting answer.")
     else:
-        print(f"Agent used {len(resp1.tools) + len(resp2.tools)} tool(s).")
+        print(f"Agent used {len(resp1.tools)} tool(s).")
