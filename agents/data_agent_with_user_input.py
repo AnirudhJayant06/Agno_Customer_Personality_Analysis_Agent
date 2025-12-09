@@ -39,12 +39,11 @@ def get_user_query():
           
     (e.g., "Show top 5 high-value customers with kids")
           
-    Note: Enter 'Q' to quit.
-    
+    Note: Enter 'Q' to quit.    
     """)
 
     while True:
-        query = input("\nEnter your query: ").strip()
+        query = input("Enter your query: ").strip()
 
         # Quit condition
         if query.lower() == "q":
@@ -143,7 +142,17 @@ if __name__ == "__main__":
         
         # Send the user’s query to LLM / agents here
         response = agent.run(query, stream=False)
-        print("\n Here are your required statistics:", response.content)
+
+        try:
+            data = json.loads(str(response.content))
+        except json.JSONDecodeError:
+            # Fallback: model didn’t return valid JSON
+            print("\nRaw response from agent:\n", response.content)
+        else:
+            print("\nHere are your required statistics:\n")
+            print(json.dumps(data, indent=4))  # nicely formatted JSON
+
+        #print("\n Here are your required statistics:", response.content)
 
         if response.tools:
             print("\n✅ Tools were used in this run.\n")
